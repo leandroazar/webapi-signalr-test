@@ -28,6 +28,7 @@ namespace webapi_signalr_test
         {
 
             services.AddControllers();
+            //adicionado cors para funcionamento da pagina em angular
             services.AddCors(option =>
             {
                 option.AddPolicy("CorsPolicy", builder =>
