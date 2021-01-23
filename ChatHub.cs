@@ -6,10 +6,10 @@ namespace webapi_signalr_test
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string user, string message)
+        /*public async Task SendMessage(string user, string message)
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
-        }
+        }*/
 
         public void GetDataFromClient(string userId, string connectionId)
         {

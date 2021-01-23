@@ -28,6 +28,15 @@ namespace webapi_signalr_test
         {
 
             services.AddControllers();
+            services.AddCors(option =>
+            {
+                option.AddPolicy("CorsPolicy", builder =>
+                         builder.WithOrigins("*", "http://localhost:4200")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
+
             services.AddSignalR();
             services.AddSwaggerGen(c =>
             {
