@@ -19,6 +19,7 @@ namespace webapi_signalr_test
         public override Task OnConnectedAsync()
         {
             var connectionId = Context.ConnectionId;
+            ClientRepsository.clients.Add(connectionId, connectionId);
             Clients.Client(connectionId).SendAsync("WelcomeMethodName", connectionId);
             return base.OnConnectedAsync();
         }
@@ -26,6 +27,7 @@ namespace webapi_signalr_test
         public override Task OnDisconnectedAsync(Exception exception)
         {
             var connectionId = Context.ConnectionId;
+            ClientRepsository.clients.Remove(connectionId);
             return base.OnDisconnectedAsync(exception);
         }
     }

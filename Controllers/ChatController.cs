@@ -39,5 +39,23 @@ namespace webapi_signalr_test
         {
             _hub.Clients.Client(connectionId).SendAsync("privateMessageMethodName", message);
         }
+
+        /// <summary>
+        /// Get all clients connected
+        /// </summary>
+        [HttpGet]
+        public IActionResult Get()
+        {
+            if(ClientRepsository.clients != null )
+            {
+                foreach(var client in ClientRepsository.clients)
+                {
+                    Debug.WriteLine(client);
+                    Console.WriteLine(client);
+                }
+                return Ok(ClientRepsository.clients);
+            }
+            return Ok();
+        }
     }
 }
